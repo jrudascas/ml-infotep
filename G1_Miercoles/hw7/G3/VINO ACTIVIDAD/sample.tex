@@ -1,0 +1,80 @@
+\documentclass[a4paper, 10pt]{article}
+\hyphenpenalty=8000
+\textwidth=125mm
+\textheight=185mm
+
+\usepackage{graphicx}
+\usepackage{alltt}
+\usepackage{amsmath}
+\usepackage[hidelinks, pdftex]{hyperref}
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{\texttt{https://doi.org/#1}}}
+
+\begin{document}
+
+\begin{center}
+Nonlinear Analysis: Modelling and Control, Vol. vv, No. nn, YYYY\\
+\copyright\ Vilnius University\\[24pt]
+\LARGE
+\textbf{Análisis de Composición Química del Vino de Banano}\footnote{Este estudio fue realizado con el apoyo de Vinos Zungo SA.}\\[6pt]
+\small
+\textbf{Carlos Jerónimo, Robbyel Sánchez, Alexdith Ariza}\\[6pt]
+Institución de los autores, dirección \\ autor@correo.com\\[6pt]
+Recibido: fecha\quad/\quad
+Revisado: fecha\quad/\quad
+Publicado en línea: fecha
+\end{center}
+
+\begin{abstract}
+Este documento presenta el análisis de la composición química del vino de banano desarrollado por la empresa Vinos Zungo SA. Se reportan valores clave de componentes químicos como alcohol, acidez, minerales y fenoles, fundamentales para su caracterización y evaluación comercial.\vskip 2mm
+
+\textbf{Palabras clave:} vino de banano, análisis químico, fenoles, acidez, color.
+\end{abstract}
+
+\section{Introducción}
+El análisis químico de bebidas fermentadas permite evaluar su calidad y estabilidad. En este estudio, se presentan los resultados obtenidos del vino de banano, con énfasis en su composición fenólica y características físico-químicas.
+
+\section{Resultados del análisis químico}
+La composición química del vino de banano se resume en la Tabla \ref{tabla:resultados}.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Componente} & \textbf{Valor} \\
+\hline
+Alcohol & 14.03 \\
+Ácido málico & 1.71 \\
+Cenizas & 2.41 \\
+Alcalinidad de cenizas & 15.5 \\
+Magnesio & 126 \\
+Fenoles totales & 2.79 \\
+Flavonoides & 3.05 \\
+Fenoles no flavonoides & 0.3 \\
+Proantocianinas & 2.3 \\
+Intensidad de color & 5.57 \\
+Tono (Hue) & 1.04 \\
+D280/OD315 de vinos diluidos & 3.82 \\
+Prolina & 1062 \\
+\hline
+\end{tabular}
+\caption{Resultados del análisis químico del vino de banano.}
+\label{tabla:resultados}
+\end{table}
+
+\section{Conclusiones}
+Los resultados obtenidos indican que el vino de banano tiene una composición equilibrada con un contenido alcohólico significativo y una alta concentración de fenoles. Esto sugiere que el producto puede tener propiedades antioxidantes y ser viable para consumo comercial.
+
+\paragraph{Contribuciones de los autores.} Carlos Jerónimo: metodología y análisis formal; Robbyel Sánchez: validación y software; Alexdith Ariza: redacción y revisión del manuscrito.
+
+\paragraph{Conflicto de intereses.} Los autores declaran que no existen conflictos de interés.
+
+\paragraph{Agradecimientos.} Agradecemos a la empresa Vinos Zungo SA por su colaboración en este estudio y la provisión de muestras.
+
+\bibliographystyle{NAplain}
+\bibliography{sample}
+
+\end{document}
