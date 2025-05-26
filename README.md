@@ -47,9 +47,27 @@ NOTA: Estos tutoriales son solo una guía. El manejo de herramientas hace parte 
 - [Validación de un modelo](https://mlu-explain.github.io/train-test-validation/)
 - [Arboles de decisión]()
 - [kNN]()
-- [Supper Vector Machine]()
+- [Supper Vector Machine](https://www.geeksforgeeks.org/support-vector-machine-algorithm/)
 - [Aprendizaje profundo - Redes Neuronales Convolucionales]()
 
+## Guía para el proyecto final del curso
+
+- Cada grupo deberá seleccionar un dataset de [datos abiertos Colombia] (https://www.datos.gov.co/browse?limitTo=datasets&sortBy=relevance&pageSize=20)
+- Deberán leer la documentación de su selección y comprenderla en detalle.
+- Deberán proponer una pregunta problema que deseen resolver utilizando el conjunto de datos seleccionados.
+- Deberán realizar un analisis completo de sus datos, utilizando la mayor cantidad de herramientas discutidas en el curso (análisis univariados, análisis bivariados, matrices de correlación, preprocesamiento de datos si aplica, discusión preliminar de su fuente de datos, agrupamientos, componenes independientes, optimización, optimización bioinspirada, clasificación.)
+- Solo es permitido utilizar como base las codificaciones compartidas durante todo el curso.
+- Deberán preparar una presentación final del curso, la implemetación deberá ser enviada a más tardar antes del inicio de la clase final, un articulo tipo revista de la IEEE con sus analisis y resultados.
+
+NOTA: Se evaluarán los siguientes aspectos:
+
+- Cumplimiento tiempos de entrega (0.2 puntos)
+- Fluidez y precisión durante la presentación (1 puntos)
+- Calidad de las diapositivas (0.3 puntos)
+- Calidad de la pregunta/problema planteado (0.5 puntos)
+- Calidad del abordaje propuesto (1.5 puntos)
+- Calidad de la impletación (1 puntos)
+- Calidad del informe (0.5 puntos)
 
 ## Lecturas sugeridas
 - [Lectura sugerida # 1 - Buenas practicas en el uso de libros de Jupyter Notebooks](https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1007007&type=printable)
