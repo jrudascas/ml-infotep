@@ -62,10 +62,10 @@ NOTA: Estos tutoriales son solo una guía. El manejo de herramientas hace parte 
 NOTA: Se evaluarán los siguientes aspectos:
 
 - Cumplimiento tiempos de entrega (0.2 puntos)
-- Fluidez y precisión durante la presentación (1 puntos)
+- Fluidez, profundidad y precisión durante la presentación (1.5 puntos)
 - Calidad de las diapositivas (0.3 puntos)
 - Calidad de la pregunta/problema planteado (0.5 puntos)
-- Calidad del abordaje propuesto (1.5 puntos)
+- Calidad del abordaje propuesto (1 puntos)
 - Calidad de la impletación (1 puntos)
 - Calidad del informe (0.5 puntos)
 
