@@ -1,2 +1,0 @@
-Alexdith Ariza  
-Nelson Martinez
