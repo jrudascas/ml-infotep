@@ -1,4 +1,4 @@
-# INFOTEP - Aprendizaje de Maquina - 2025-I Homeworks
+# UNICARIBE - Aprendizaje de Maquina - 2025-II Homeworks
 
 Los entregables del curso deberán enviarse a traves de este repositorio de GitHub como PR. Se recomienda clonar el proyecto, actualizar su carpeta de grupo y realizar un PR. Evite editar cualquier contenido diferente a la carpeta de su grupo. Todo PR que contenga modificaciones a contenidos no permitidos será descartado y se asumirá como no entregable.
 
@@ -52,23 +52,6 @@ NOTA: Estos tutoriales son solo una guía. El manejo de herramientas hace parte 
 
 ## Guía para el proyecto final del curso
 
-- Cada grupo deberá seleccionar un dataset de [datos abiertos Colombia] (https://www.datos.gov.co/browse?limitTo=datasets&sortBy=relevance&pageSize=20)
-- Deberán leer la documentación de su selección y comprenderla en detalle.
-- Deberán proponer una pregunta problema que deseen resolver utilizando el conjunto de datos seleccionados.
-- Deberán realizar un analisis completo de sus datos, utilizando la mayor cantidad de herramientas discutidas en el curso (análisis univariados, análisis bivariados, matrices de correlación, preprocesamiento de datos si aplica, discusión preliminar de su fuente de datos, agrupamientos, componenes independientes, optimización, optimización bioinspirada, clasificación.)
-- Solo es permitido utilizar como base las codificaciones compartidas durante todo el curso.
-- Deberán preparar una presentación final del curso, la implemetación deberá ser enviada a más tardar antes del inicio de la clase final, un articulo tipo revista de la IEEE con sus analisis y resultados.
-
-NOTA: Se evaluarán los siguientes aspectos:
-
-- Cumplimiento tiempos de entrega (0.2 puntos)
-- Fluidez, profundidad y precisión durante la presentación (1.5 puntos)
-- Calidad de las diapositivas (0.3 puntos)
-- Calidad de la pregunta/problema planteado (0.5 puntos)
-- Calidad del abordaje propuesto (1 puntos)
-- Calidad de la impletación (1 puntos)
-- Calidad del informe (0.5 puntos)
-
 ## Lecturas sugeridas
 - [Lectura sugerida # 1 - Buenas practicas en el uso de libros de Jupyter Notebooks](https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1007007&type=printable)
 - [Impacto de la IA Generativa en el pensamiento critico](https://drive.google.com/file/d/1w20STqksV6vM4cs3-SnHdftBfOeGqd9G/view?usp=sharing)
@@ -88,6 +71,6 @@ https://www.overleaf.com/latex/templates/template-for-nonlinear-analysis-modelli
 
 ## Listado de grupos y calificaciones
 
-[Link grupo y calificaciones](https://docs.google.com/spreadsheets/d/1IHfqGEIDr77H5cJPhz7dZnzx6c3krxtVxu-tnL1DfBc/edit?usp=sharing)
+[Link grupo y calificaciones](https://docs.google.com/spreadsheets/d/1M00o-j9rOb-t4n6fPQfuIzfRjbMe3y8DUEi-VbsoqyE/edit?usp=sharing)
 
 Por favor cualquier duda puede ser remitida al correo [jrudascas@gmail.com](jrudascas@gmail.com).
