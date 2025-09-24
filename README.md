@@ -63,6 +63,11 @@ NOTA: Estos tutoriales son solo una guía. El manejo de herramientas hace parte 
 - [Ejemplos](https://github.com/jrudascas/ml-infotep/tree/main/Examples)
 
 
+## Datasets
+- [Shop Customer](https://www.kaggle.com/datasets/datascientistanna/customers-dataset)
+- [Health & Lifestyle](https://www.kaggle.com/datasets/chik0di/health-and-lifestyle-dataset)
+- [Smart Agricultural Production Optimizing Engine](https://www.kaggle.com/datasets/chitrakumari25/smart-agricultural-production-optimizing-engine)
+
 ## Plantilla de informes
 
 ```
