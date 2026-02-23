@@ -1,10 +1,14 @@
-# UNICARIBE - Aprendizaje de Maquina - 2025-II Homeworks
+# Institución Universitaria del Caribe
+# Bienvenidos al Curso de Inteligencia Artificial y Aprendizaje de Maquinas, periodo 2026-I
 
-Los entregables del curso deberán enviarse a traves de este repositorio de GitHub como PR. Se recomienda clonar el proyecto, actualizar su carpeta de grupo y realizar un PR. Evite editar cualquier contenido diferente a la carpeta de su grupo. Todo PR que contenga modificaciones a contenidos no permitidos será descartado y se asumirá como no entregable.
+Hay momentos en la historia en que todo cambia. La imprenta. La revolución industrial. Internet. Hoy, ustedes están en el umbral de la siguiente gran transformación: la era de la Inteligencia Artificial. Y no son espectadores — son protagonistas.
+En este curso no solo aprenderán a entrenar modelos o implementar algoritmos. Aprenderán a pensar como ingenieros del futuro: a ver patrones donde otros ven ruido, a extraer conocimiento donde otros ven datos, y a construir sistemas que aprenden y mejoran solos.
+El camino tendrá obstáculos. Habrá modelos que fallen, código que no funcione y conceptos que cuesten. Pero cada error es parte del aprendizaje, y la persistencia es la habilidad más valiosa que pueden desarrollar.
+Colombia y toda la región necesitan con urgencia profesionales en IA que construyan soluciones con visión local. El mundo no puede esperar a que otros resuelvan nuestros problemas. Ustedes pueden ser esa respuesta.
+Lleguen con curiosidad, con ganas de equivocarse y de construir. El futuro de la IA lo escriben personas como ustedes.
+Bienvenidos. Ahora, a construirlo.
 
-```
-git clone https://github.com/jrudascas/ml-infotep.git
-```
+Atentamente: Su amigo y profesor PhD Jorge Rudas
 
 
 ## Comandos utiles en git
@@ -76,6 +80,6 @@ https://www.overleaf.com/latex/templates/template-for-nonlinear-analysis-modelli
 
 ## Listado de grupos y calificaciones
 
-[Link grupo y calificaciones](https://docs.google.com/spreadsheets/d/1M00o-j9rOb-t4n6fPQfuIzfRjbMe3y8DUEi-VbsoqyE/edit?usp=sharing)
+[Link grupo y calificaciones](https://docs.google.com/spreadsheets/d/1o7SZePAwj0o43mklb06X2S58bC4S8Gf6/edit?usp=sharing&ouid=110356131462273622705&rtpof=true&sd=true)
 
 Por favor cualquier duda puede ser remitida al correo [jrudascas@gmail.com](jrudascas@gmail.com).
