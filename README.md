@@ -58,7 +58,11 @@ NOTA: Estos tutoriales son solo una guía. El manejo de herramientas hace parte 
 
 ## Lecturas sugeridas
 - [Lectura sugerida # 1 - Buenas practicas en el uso de libros de Jupyter Notebooks](https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1007007&type=printable)
-- [Impacto de la IA Generativa en el pensamiento critico](https://drive.google.com/file/d/1w20STqksV6vM4cs3-SnHdftBfOeGqd9G/view?usp=sharing)
+- [How AI assistance impacts the formation of coding skills](https://www.anthropic.com/research/AI-assistance-coding-skills)
+- [Critical Thinking Collapse 2.0: AI’s Impact on OSINT](https://www.dutchosintguy.com/post/critical-thinking-collapse-2-0-ai-s-impact-on-osint)
+- [The Impact of Generative AI on Critical Thinking: Self-Reported Reductions in Cognitive Effort and Confidence Effects From a Survey of Knowledge Workers](https://www.microsoft.com/en-us/research/wp-content/uploads/2025/01/lee_2025_ai_critical_thinking_survey.pdf)
+- [ChatGPT May Be Eroding Critical Thinking Skills, According to a New MIT Study](https://time.com/7295195/ai-chatgpt-google-learning-school/)
+- [The AI Tsunami Is Here: Reinventing Education for the Age of AI](https://er.educause.edu/articles/2025/9/the-ai-tsunami-is-here-reinventing-education-for-the-age-of-ai)
 
 
 ## Recursos
