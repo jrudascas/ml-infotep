@@ -69,6 +69,7 @@ NOTA: Estos tutoriales son solo una guía. El manejo de herramientas hace parte 
 - [Imagen1 - Mancha](https://profecaevp.wordpress.com/wp-content/uploads/2015/04/mancha_png_by_ona_smile-d5tmk7x.png)
 - [Datasets](https://github.com/jrudascas/ml-infotep/tree/main/Datasets)
 - [Ejemplos](https://github.com/jrudascas/ml-infotep/tree/main/Examples)
+- [Unlock Your Potential with Data Science and AI](https://weblab.t.u-tokyo.ac.jp/en/lecture/gci/)
 
 
 ## Datasets
