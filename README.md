@@ -53,8 +53,11 @@ NOTA: Estos tutoriales son solo una guía. El manejo de herramientas hace parte 
 - [kNN]()
 - [Supper Vector Machine](https://www.geeksforgeeks.org/support-vector-machine-algorithm/)
 - [Aprendizaje profundo - Redes Neuronales Convolucionales]()
+- [Ruta de programación en Python](https://retosdeprogramacion.com/roadmap/)
+
 
 ## Guía para el proyecto final del curso
+
 
 ## Lecturas sugeridas
 - [Lectura sugerida # 1 - Buenas practicas en el uso de libros de Jupyter Notebooks](https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1007007&type=printable)
