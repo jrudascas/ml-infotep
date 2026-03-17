@@ -86,6 +86,10 @@ NOTA: Estos tutoriales son solo una guía. El manejo de herramientas hace parte 
 https://www.overleaf.com/latex/templates/template-for-nonlinear-analysis-modelling-and-control/jdhqdcxsrqqt
 ```
 
+## Clases Virtuales
+- [17 de Marzo del 2026, 06:10pm](https://meet.google.com/stp-tkqx-nrd)
+
+
 ## Listado de grupos y calificaciones
 
 [Link grupo y calificaciones](https://docs.google.com/spreadsheets/d/1o7SZePAwj0o43mklb06X2S58bC4S8Gf6/edit?usp=sharing&ouid=110356131462273622705&rtpof=true&sd=true)
