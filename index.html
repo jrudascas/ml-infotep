@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolución Artificial - Plataforma de Algoritmos Genéticos</title>
+    <!-- Meta SEO -->
+    <meta name="description" content="Aprende sobre Algoritmos Genéticos de forma interactiva. Curso paso a paso, simuladores visuales en tiempo real, biblioteca de códigos y evaluaciones dinámicas.">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#7b2fff">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="GeneTech">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+
+    <!-- Fuentes Locales (sin internet requerido) -->
+    <link rel="stylesheet" href="css/fonts-local.css">
+
+    <!-- Hoja de estilos -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Login Screen Overlay -->
+    <div class="login-overlay" id="login-overlay">
+        <div class="login-card glass-panel">
+            <div class="login-header-decor">🧬</div>
+            <h2>Bienvenido a GeneTech</h2>
+            <p>Plataforma Interactiva de Algoritmos Genéticos. Por favor, selecciona un rol o ingresa tus datos para continuar.</p>
+            
+            <div class="login-quick-actions">
+                <button class="btn btn-primary" id="btn-login-student">
+                    <span>Ingresar como Estudiante</span>
+                </button>
+                <button class="btn btn-secondary" id="btn-login-admin" style="border-color: var(--neon-purple);">
+                    <span class="text-purple">Ingresar como Administrador</span>
+                </button>
+            </div>
+
+            <div class="login-divider">
+                <span>o utiliza credenciales</span>
+            </div>
+
+            <form class="login-form" id="login-form" onsubmit="event.preventDefault();">
+                <div class="control-group">
+                    <label for="login-username">Nombre de Usuario:</label>
+                    <input type="text" id="login-username" class="form-control" placeholder="Ej. Juan Pérez" required>
+                </div>
+                <div class="control-group">
+                    <label for="login-role-select">Seleccionar Rol:</label>
+                    <select id="login-role-select" class="form-control">
+                        <option value="student">Estudiante (Acceso Educativo)</option>
+                        <option value="admin">Administrador (Control Total)</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" id="btn-login-submit" style="margin-top:20px;">Iniciar Sesión</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Efecto de partículas/brillo de fondo -->
+    <div class="bg-glow-container">
+        <div class="glow-orb glow-1"></div>
+        <div class="glow-orb glow-2"></div>
+        <div class="glow-orb glow-3"></div>
+    </div>
+
+    <!-- Navegación Principal (Glassmorphism) -->
+    <header class="main-header">
+        <div class="header-container">
+            <a href="#" class="logo-area" id="nav-logo">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4.5 16.5c-1.5 1.26-2.5 3.19-2.5 5.5h20c0-2.31-1-4.24-2.5-5.5" />
+                    <path d="M12 2C6.5 2 2 6.5 2 12c0 1.25.23 2.45.65 3.56" stroke-dasharray="2 2" />
+                    <path d="M21.35 15.56c.42-1.11.65-2.31.65-3.56 0-5.5-4.5-10-10-10" stroke-dasharray="2 2" />
+                    <path d="M12 6a6 6 0 0 1 6 6c0 1.38-.5 2.5-1.5 3.5L12 20l-4.5-4.5C6.5 14.5 6 13.38 6 12a6 6 0 0 1 6-6Z" fill="url(#logo-grad)" />
+                    <defs>
+                        <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#8b5cf6" />
+                            <stop offset="100%" stop-color="#06b6d4" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <span class="logo-text">Gene<span class="highlight">Tech</span></span>
+            </a>
+            
+            <nav class="nav-links">
+                <button class="nav-btn active" data-tab="inicio" id="tab-btn-inicio">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    <span>Inicio</span>
+                </button>
+                <button class="nav-btn" data-tab="curso" id="tab-btn-curso">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+                    <span>Curso</span>
+                </button>
+                <button class="nav-btn" data-tab="laboratorio" id="tab-btn-laboratorio">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10v6"/><path d="M6 4h12c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2Z"/><path d="M9 9h6M9 13h6M9 17h6"/></svg>
+                    <span>Laboratorio</span>
+                </button>
+                <button class="nav-btn" data-tab="codigo" id="tab-btn-codigo">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="2" x2="10" y2="22"/></svg>
+                    <span>Código</span>
+                </button>
+                <button class="nav-btn" data-tab="evaluacion" id="tab-btn-evaluacion">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    <span>Evaluación</span>
+                </button>
+                <button class="nav-btn hidden" data-tab="admin" id="tab-btn-admin">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <span>Admin Panel</span>
+                </button>
+            </nav>
+
+            <div class="user-profile-nav hidden" id="user-profile-nav">
+                <div class="user-avatar" id="user-avatar-initials">U</div>
+                <div class="user-info">
+                    <span class="user-name" id="user-display-name">Usuario</span>
+                    <span class="user-role" id="user-display-role">Estudiante</span>
+                </div>
+                <button class="btn-logout" id="btn-logout" title="Cerrar Sesión">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px; height:16px; display:block;"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenedor Principal de Vistas -->
+    <main class="content-wrapper" id="main-content">
+        
+        <!-- VISTA: INICIO -->
+        <section id="view-inicio" class="view-section active">
+            <div class="hero-section animate-fade-in">
+                <div class="hero-badge">🧬 Evolución Computacional</div>
+                <h1 class="hero-title">Algoritmos Genéticos</h1>
+                <p class="hero-subtitle">Descubre la potencia de la inteligencia artificial evolutiva. Resuelve problemas complejos imitando la selección natural de Darwin desde tu navegador.</p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary" onclick="app.switchTab('curso')">
+                        <span>Iniciar Curso</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-arrow"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </button>
+                    <button class="btn btn-secondary" onclick="app.switchTab('laboratorio')">🧪 Ir al Laboratorio</button>
+                </div>
+            </div>
+
+            <!-- Panel de Conceptos Clave -->
+            <div class="features-grid">
+                <div class="feature-card" onclick="app.switchTab('curso', 1)">
+                    <div class="feature-icon bg-cyan">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3>Población Inicial</h3>
+                    <p>Conjunto de soluciones candidatas representadas como cromosomas binarios o estructurados.</p>
+                    <span class="card-link">Aprender más &rarr;</span>
+                </div>
+                <div class="feature-card" onclick="app.switchTab('curso', 3)">
+                    <div class="feature-icon bg-green">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h3>Función de Aptitud</h3>
+                    <p>La métrica encargada de puntuar qué tan buena es cada solución frente al problema planteado.</p>
+                    <span class="card-link">Aprender más &rarr;</span>
+                </div>
+                <div class="feature-card" onclick="app.switchTab('curso', 4)">
+                    <div class="feature-icon bg-purple">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    </div>
+                    <h3>Cruce (Crossover)</h3>
+                    <p>La recombinación del material genético de dos padres aptos para engendrar descendientes mejorados.</p>
+                    <span class="card-link">Aprender más &rarr;</span>
+                </div>
+                <div class="feature-card" onclick="app.switchTab('curso', 4)">
+                    <div class="feature-icon bg-pink">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.886H3.82l5.137 3.733L7.045 18.5 12 14.767l4.955 3.738-1.912-5.881 5.137-3.733h-6.268L12 3Z"/></svg>
+                    </div>
+                    <h3>Mutación</h3>
+                    <p>Pequeñas modificaciones aleatorias en los genes para asegurar la diversidad e impedir atascos locales.</p>
+                    <span class="card-link">Aprender más &rarr;</span>
+                </div>
+            </div>
+
+            <!-- Mini Visualizador Demostrativo -->
+            <div class="demo-visualizer-section glass-panel">
+                <div class="demo-info">
+                    <h2>Evolución en Acción</h2>
+                    <p>Observa cómo una población de cadenas aleatorias de ADN digital muta y se reproduce para deletrear la palabra objetivo. Este es el famoso <em>Teorema de los Monos Infinitos</em>.</p>
+                    <div class="demo-stats">
+                        <div>Generación: <strong id="demo-generation">0</strong></div>
+                        <div>Mejor Aptitud: <strong id="demo-fitness" class="text-green">0%</strong></div>
+                    </div>
+                    <button class="btn btn-primary btn-sm" id="btn-demo-start">▶️ Iniciar Demostración</button>
+                </div>
+                <div class="demo-screen">
+                    <div class="target-word-badge">Objetivo: <span id="demo-target-text">ALGORITMO GENETICO</span></div>
+                    <div class="chromosome-visual" id="demo-best-chromosome">-------- -- --------</div>
+                    <div class="dna-helix-container" id="demo-dna-helix">
+                        <!-- Generado dinámicamente -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VISTA: CURSO -->
+        <section id="view-curso" class="view-section">
+            <div class="course-container">
+                <!-- Barra lateral de Lecciones -->
+                <aside class="course-sidebar glass-panel">
+                    <h3>Lecciones</h3>
+                    <div class="lessons-list" id="lessons-nav">
+                        <!-- Agregado dinámicamente -->
+                    </div>
+                </aside>
+                
+                <!-- Visor de Lección Actual -->
+                <div class="course-content-area glass-panel" id="lesson-content-panel">
+                    <div class="lesson-header">
+                        <span class="lesson-category" id="lesson-current-category">Introducción</span>
+                        <h2 id="lesson-current-title">1. ¿Qué es un Algoritmo Genético?</h2>
+                    </div>
+                    <div class="lesson-body" id="lesson-current-body">
+                        <!-- El texto/HTML de la lección se carga aquí -->
+                    </div>
+                    <div class="lesson-footer">
+                        <button class="btn btn-secondary btn-sm" id="btn-lesson-prev">&larr; Anterior</button>
+                        <button class="btn btn-primary btn-sm" id="btn-lesson-next">Siguiente &rarr;</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VISTA: LABORATORIO -->
+        <section id="view-laboratorio" class="view-section">
+            <div class="lab-grid">
+                <!-- Panel Lateral de Ajustes del Algoritmo (Controles) -->
+                <aside class="lab-sidebar glass-panel">
+                    <h2 class="sidebar-title">⚙️ Parámetros del AG</h2>
+                    
+                    <!-- Selección de Simulador -->
+                    <div class="control-group">
+                        <label for="sim-selector">Problema a resolver:</label>
+                        <select id="sim-selector" class="form-control">
+                            <option value="string">Evolución de Texto (String Matcher)</option>
+                            <option value="tsp">Viajante de Comercio (TSP Canvas)</option>
+                            <option value="math">Maximizador de Función 2D (Ondas)</option>
+                        </select>
+                    </div>
+
+                    <hr class="divider">
+
+                    <!-- Sliders de Control -->
+                    <div class="control-group">
+                        <div class="control-label-row">
+                            <label for="slider-pop-size">Población ($N$):</label>
+                            <span class="control-value" id="val-pop-size">150</span>
+                        </div>
+                        <input type="range" id="slider-pop-size" min="10" max="500" step="10" value="150">
+                        <span class="control-desc">Cantidad de cromosomas en la población.</span>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label-row">
+                            <label for="slider-mutation">Tasa de Mutación ($p_m$):</label>
+                            <span class="control-value" id="val-mutation">1%</span>
+                        </div>
+                        <input type="range" id="slider-mutation" min="0.1" max="20" step="0.1" value="1">
+                        <span class="control-desc">Probabilidad de mutación por cada gen.</span>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label-row">
+                            <label for="slider-crossover">Tasa de Cruce ($p_c$):</label>
+                            <span class="control-value" id="val-crossover">80%</span>
+                        </div>
+                        <input type="range" id="slider-crossover" min="10" max="100" step="5" value="80">
+                        <span class="control-desc">Probabilidad de que dos padres se crucen.</span>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label-row">
+                            <label for="select-crossover-type">Tipo de Cruce:</label>
+                        </div>
+                        <select id="select-crossover-type" class="form-control">
+                            <option value="single">Monopunto (Single Point)</option>
+                            <option value="uniform">Uniforme (50% Mezcla)</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="control-label-row">
+                            <label for="toggle-elitism">Elitismo:</label>
+                            <input type="checkbox" id="toggle-elitism" checked style="width:18px; height:18px; cursor:pointer;">
+                        </div>
+                        <div class="control-label-row" style="margin-top:8px;" id="elitism-count-group">
+                            <span>Cantidad de Elites:</span>
+                            <span class="control-value" id="val-elitism">2</span>
+                        </div>
+                        <input type="range" id="slider-elitism" min="1" max="10" value="2" style="margin: 0;">
+                        <span class="control-desc">Cantidad de mejores individuos preservados intactos.</span>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="select-selection">Método de Selección:</label>
+                        <select id="select-selection" class="form-control">
+                            <option value="tournament">Torneo (K=3)</option>
+                            <option value="roulette">Ruleta (Proporcional)</option>
+                        </select>
+                        <span class="control-desc">Cómo se escogen los progenitores de la siguiente generación.</span>
+                    </div>
+
+                    <hr class="divider">
+
+                    <!-- Entrada personalizada por Simulador -->
+                    <div id="string-controls-group" class="control-group">
+                        <label for="input-target-string">Texto Objetivo:</label>
+                        <input type="text" id="input-target-string" class="form-control uppercase-input" value="ALGORITMO GENETICO" maxlength="25">
+                        <span class="control-desc">Frase a evolucionar (Máx 25 car.).</span>
+                        <div style="margin-top: 10px;">
+                            <button class="btn btn-secondary btn-xs" id="btn-toggle-inspector" style="width:100%;">🔬 Mostrar Inspector de Genotipos</button>
+                        </div>
+                    </div>
+
+                    <div id="tsp-controls-group" class="control-group hidden">
+                        <div class="control-label-row">
+                            <label for="slider-cities">Número de Ciudades:</label>
+                            <span class="control-value" id="val-cities">20</span>
+                        </div>
+                        <input type="range" id="slider-cities" min="5" max="50" step="1" value="20">
+                        <button class="btn btn-secondary btn-xs btn-block" style="margin-top: 10px;" id="btn-tsp-clear-cities">Limpiar y Hacer Clic en el Mapa</button>
+                    </div>
+
+                    <div id="math-controls-group" class="control-group hidden">
+                        <div class="control-label-row">
+                            <label for="slider-math-range">Rango X:</label>
+                            <span class="control-value" id="val-math-range">[-1, 2]</span>
+                        </div>
+                        <span class="control-desc">f(x) = x·sin(10π·x) + 2 · Encontrar el máximo global.</span>
+                    </div>
+
+                    <!-- Velocidad de Evolución -->
+                    <div class="control-group">
+                        <div class="control-label-row">
+                            <label for="slider-speed">Velocidad (FPS):</label>
+                            <span class="control-value" id="val-speed">Normal (60fps)</span>
+                        </div>
+                        <input type="range" id="slider-speed" min="1" max="60" value="60">
+                    </div>
+
+                    <hr class="divider">
+
+                    <!-- Botones de Acción Global -->
+                    <div class="lab-actions">
+                        <button class="btn btn-success btn-block" id="btn-lab-play">▶️ Iniciar</button>
+                        <button class="btn btn-secondary btn-block" id="btn-lab-step">⏭️ Paso</button>
+                        <button class="btn btn-danger btn-block" id="btn-lab-reset">🔄 Reiniciar</button>
+                    </div>
+                </aside>
+
+                <!-- Área Central de Simulación -->
+                <main class="lab-main glass-panel">
+                    <!-- Estadísticas Rápidas -->
+                    <div class="stats-panel">
+                        <div class="stat-box">
+                            <span class="stat-label">Generación</span>
+                            <span class="stat-number" id="lab-stat-gen">0</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-label">Mejor Aptitud</span>
+                            <span class="stat-number text-green" id="lab-stat-best-fit">0%</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-label">Aptitud Promedio</span>
+                            <span class="stat-number text-cyan" id="lab-stat-avg-fit">0%</span>
+                        </div>
+                    </div>
+
+                    <!-- Panel de Pantalla de Simulación -->
+                    <div class="simulation-screen-wrapper">
+                        <!-- Pantalla A: String Matcher -->
+                        <div id="screen-string" class="sim-screen active">
+                            <div class="best-string-container">
+                                <h3>Mejor Individuo de la Generación</h3>
+                                <div class="dna-badge-output" id="lab-string-best-individual">-------------------</div>
+                            </div>
+                            <div class="string-details-grid">
+                                <div class="pop-list-card">
+                                    <h4>Top 8 de la Población</h4>
+                                    <div class="pop-items-list" id="lab-string-pop-list"></div>
+                                </div>
+                                <div class="graph-card">
+                                    <h4>Historial de Evolución</h4>
+                                    <div class="canvas-chart-container">
+                                        <canvas id="fitnessChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Inspector de Genotipos (colapsable) -->
+                            <div class="genome-inspector hidden" id="genome-inspector-panel">
+                                <div class="inspector-header">
+                                    <h4>🔬 Inspector de Genotipos — Diversidad de la Población</h4>
+                                    <span class="inspector-hint">Verde = gen correcto &bull; Gris = incorrecto &bull; Observa cómo converge toda la población</span>
+                                </div>
+                                <div class="genome-grid" id="genome-grid-container"></div>
+                            </div>
+                        </div>
+
+                        <!-- Pantalla B: TSP Canvas -->
+                        <div id="screen-tsp" class="sim-screen">
+                            <div class="canvas-header-row">
+                                <div>
+                                    <h3>Optimización de Ruta</h3>
+                                    <p class="subtitle-text">Haz clic en el mapa negro para añadir tus propias ciudades a la ruta.</p>
+                                </div>
+                                <div class="tsp-stat">
+                                    Ruta Más Corta: <strong id="lab-tsp-best-dist" class="text-pink">0.00px</strong>
+                                </div>
+                            </div>
+                            <div class="canvas-container">
+                                <canvas id="tspCanvas" width="700" height="420"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Pantalla C: Maximizador de Función 2D -->
+                        <div id="screen-math" class="sim-screen">
+                            <div class="canvas-header-row">
+                                <div>
+                                    <h3>Maximizador de Función Matemática</h3>
+                                    <p class="subtitle-text">f(x) = x · sin(10π · x) + 2 &nbsp;·&nbsp; x ∈ [−1, 2] · Los puntos de colores son los cromosomas escalando picos.</p>
+                                </div>
+                                <div class="tsp-stat">
+                                    Mejor x: <strong id="lab-math-best-x" class="text-purple">—</strong>&nbsp;&nbsp; f(x): <strong id="lab-math-best-fx" class="text-green">—</strong>
+                                </div>
+                            </div>
+                            <div class="canvas-container">
+                                <canvas id="mathCanvas" width="700" height="380"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </section>
+
+        <!-- VISTA: CODIGO -->
+        <section id="view-codigo" class="view-section">
+            <div class="code-viewer-container glass-panel">
+                <div class="code-viewer-header">
+                    <h2>Biblioteca de Código Fuente</h2>
+                    <p>4 problemas clásicos listos para usar, documentados en español. Selecciona el problema y el lenguaje de programación.</p>
+                </div>
+
+                <!-- Selector de Problema Clásico -->
+                <div class="problem-tabs-bar">
+                    <button class="problem-tab active" data-problem="onemax" id="code-prob-onemax">📊 OneMax</button>
+                    <button class="problem-tab" data-problem="string" id="code-prob-string">🔤 Mono Infinito</button>
+                    <button class="problem-tab" data-problem="knapsack" id="code-prob-knapsack">🎒 Mochila</button>
+                    <button class="problem-tab" data-problem="tsp" id="code-prob-tsp">🗺️ TSP</button>
+                </div>
+
+                <div class="code-problem-description" id="code-problem-desc">
+                    <!-- Descripción del problema inyectada dinámicamente -->
+                </div>
+
+                <div class="code-viewer-subheader">
+                    <div class="lang-tabs-bar" style="position:static; margin-bottom: 0;">
+                        <button class="lang-tab active" data-lang="js" id="code-btn-js">JavaScript</button>
+                        <button class="lang-tab" data-lang="python" id="code-btn-python">Python</button>
+                    </div>
+                </div>
+
+                <div class="code-viewer-body">
+                    <div class="code-content-wrapper">
+                        <button class="btn btn-secondary btn-xs btn-copy" id="btn-copy-code">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="copy-icon"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                            <span id="copy-btn-text">Copiar Código</span>
+                        </button>
+                        <pre><code id="code-display" class="language-js">
+<!-- Código inyectado dinámicamente -->
+                        </code></pre>
+                    </div>
+                    
+                    <div class="code-explanation-card">
+                        <h3>🔬 Explicación del Flujo Evolutivo</h3>
+                        <ul class="explanation-list" id="code-explanation-list">
+                            <!-- Inyectado dinámicamente -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VISTA: EVALUACION -->
+        <section id="view-evaluacion" class="view-section">
+            <!-- HUB de Selección de Examen -->
+            <div id="quiz-hub-screen" class="quiz-hub active">
+                <div class="quiz-hub-header">
+                    <div class="quiz-hub-decor">🧬</div>
+                    <h2>Centro de Evaluaciones</h2>
+                    <p>Elige el examen que quieres rendir. Cada uno evalúa un área específica de los Algoritmos Genéticos.</p>
+                </div>
+                <div class="exam-cards-grid">
+                    <div class="exam-card glass-panel" id="exam-card-basics" data-exam="basics">
+                        <div class="exam-card-icon">🔬</div>
+                        <h3>Fundamentos Básicos</h3>
+                        <p>Conceptos esenciales: cromosomas, genotipo, fenotipo, función de aptitud y el ciclo evolutivo.</p>
+                        <div class="exam-meta"><span>10 Preguntas</span><span class="exam-diff basics">Introductorio</span></div>
+                        <button class="btn btn-primary btn-block exam-start-btn" data-exam="basics">Comenzar Examen</button>
+                    </div>
+                    <div class="exam-card glass-panel" id="exam-card-operators" data-exam="operators">
+                        <div class="exam-card-icon">⚙️</div>
+                        <h3>Operadores Genéticos</h3>
+                        <p>Selección (ruleta, torneo), cruce (un punto, uniforme), mutación y elitismo en profundidad.</p>
+                        <div class="exam-meta"><span>10 Preguntas</span><span class="exam-diff operators">Intermedio</span></div>
+                        <button class="btn btn-primary btn-block exam-start-btn" data-exam="operators">Comenzar Examen</button>
+                    </div>
+                    <div class="exam-card glass-panel" id="exam-card-realworld" data-exam="realworld">
+                        <div class="exam-card-icon">🌎</div>
+                        <h3>Aplicaciones del Mundo Real</h3>
+                        <p>TSP, diseño de redes, scheduling, optimización multiobjetivo y casos industriales reales.</p>
+                        <div class="exam-meta"><span>10 Preguntas</span><span class="exam-diff realworld">Avanzado</span></div>
+                        <button class="btn btn-primary btn-block exam-start-btn" data-exam="realworld">Comenzar Examen</button>
+                    </div>
+                </div>
+                <!-- Historial del alumno actual -->
+                <div class="exam-history-card glass-panel" id="exam-history-card">
+                    <h4>📊 Tu Historial de Exámenes</h4>
+                    <div class="exam-history-grid" id="exam-history-grid">
+                        <div class="history-item"><span>Fundamentos</span><span class="history-score" id="hist-basics">—</span></div>
+                        <div class="history-item"><span>Operadores</span><span class="history-score" id="hist-operators">—</span></div>
+                        <div class="history-item"><span>Mundo Real</span><span class="history-score" id="hist-realworld">—</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenedor del Quiz Activo -->
+            <div class="quiz-container glass-panel" id="quiz-active-container" style="display:none;">
+                <!-- Cabecera del Examen Activo -->
+                <div class="quiz-active-header">
+                    <button class="btn btn-secondary btn-xs" id="btn-quiz-back-to-hub">← Volver al Hub</button>
+                    <span class="quiz-exam-title" id="quiz-active-title">Examen de Fundamentos</span>
+                    <span class="quiz-exam-badge" id="quiz-active-badge">🔬</span>
+                </div>
+
+                <!-- Pantalla de Preguntas del Quiz -->
+                <div id="quiz-question-screen" class="quiz-subscreen active">
+                    <div class="quiz-progress-bar-container">
+                        <div class="quiz-progress-label">Pregunta <span id="quiz-curr-q-num">1</span> de <span id="quiz-total-q-count">10</span></div>
+                        <div class="quiz-progress-bg">
+                            <div class="quiz-progress-fill" id="quiz-progress-bar" style="width: 10%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="question-box">
+                        <h3 id="quiz-question-text"></h3>
+                        <div class="options-grid" id="quiz-options-container"></div>
+                    </div>
+
+                    <div class="explanation-box hidden" id="quiz-explanation-box">
+                        <div class="explanation-status" id="quiz-explanation-status">¡Correcto!</div>
+                        <p class="explanation-text" id="quiz-explanation-text"></p>
+                        <button class="btn btn-primary btn-sm" id="btn-quiz-next">Siguiente Pregunta &rarr;</button>
+                    </div>
+                </div>
+
+                <!-- Pantalla de Resultados Finales -->
+                <div id="quiz-result-screen" class="quiz-subscreen">
+                    <div class="result-badge-anim" id="quiz-result-badge-icon">👑</div>
+                    <h2>¡Examen Finalizado!</h2>
+                    <p class="result-score-text">Has acertado <strong id="quiz-result-score" class="text-green">0</strong> de <strong id="quiz-total-q-count-result">10</strong> preguntas.</p>
+                    <div class="badge-card">
+                        <div class="badge-title">Tu Nivel Alcanzado:</div>
+                        <div class="badge-name" id="quiz-result-badge-name">Novato del Gen</div>
+                        <p class="badge-description" id="quiz-result-badge-desc"></p>
+                    </div>
+                    <div class="quiz-results-actions">
+                        <button class="btn btn-primary" id="btn-quiz-restart">Repetir este Examen</button>
+                        <button class="btn btn-secondary" id="btn-quiz-back-hub-result">Ver todos los Exámenes</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VISTA: ADMIN PANEL -->
+        <section id="view-admin" class="view-section">
+            <div class="admin-grid">
+                <!-- Fila Superior de Métricas -->
+                <div class="admin-metrics-row">
+                    <div class="metric-card glass-panel">
+                        <span class="metric-label">Alumnos Evaluados</span>
+                        <span class="metric-number text-cyan" id="admin-stat-total-students">4</span>
+                    </div>
+                    <div class="metric-card glass-panel">
+                        <span class="metric-label">Promedio de Notas</span>
+                        <span class="metric-number text-green" id="admin-stat-average-score">6.8 / 8</span>
+                    </div>
+                    <div class="metric-card glass-panel">
+                        <span class="metric-label">Insignia Líder</span>
+                        <span class="metric-number text-purple" id="admin-stat-top-badge">Científico</span>
+                    </div>
+                </div>
+
+                <div class="admin-main-grid">
+                    <!-- Columna 1: Gradebook -->
+                    <div class="admin-gradebook-card glass-panel">
+                        <div class="card-header-row">
+                            <h3>📋 Control de Notas (Gradebook)</h3>
+                            <input type="text" id="admin-search-student" class="form-control form-control-sm" style="max-width: 240px;" placeholder="🔍 Buscar por nombre...">
+                        </div>
+                        <div class="table-responsive">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>Alumno</th>
+                                        <th>Rol</th>
+                                        <th>Puntaje</th>
+                                        <th>Insignia</th>
+                                        <th>Fecha</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-table-grades-body">
+                                    <!-- Inyectado dinámicamente -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Columna 2: Question Creator -->
+                    <div class="admin-creator-card glass-panel">
+                        <h3>✏️ Crear Nueva Pregunta</h3>
+                        <p class="subtitle-text">Añade preguntas personalizadas de opción múltiple al cuestionario en tiempo real.</p>
+                        
+                        <form id="admin-question-form" onsubmit="event.preventDefault();" class="admin-form">
+                            <div class="control-group">
+                                <label for="admin-q-text">Pregunta:</label>
+                                <input type="text" id="admin-q-text" class="form-control" placeholder="Ej. ¿Qué es el elitismo en AG?" required>
+                            </div>
+                            
+                            <div class="options-inputs-row">
+                                <div class="control-group">
+                                    <label for="admin-q-opt-a">Opción A:</label>
+                                    <input type="text" id="admin-q-opt-a" class="form-control" placeholder="Texto opción A" required>
+                                </div>
+                                <div class="control-group">
+                                    <label for="admin-q-opt-b">Opción B:</label>
+                                    <input type="text" id="admin-q-opt-b" class="form-control" placeholder="Texto opción B" required>
+                                </div>
+                                <div class="control-group">
+                                    <label for="admin-q-opt-c">Opción C:</label>
+                                    <input type="text" id="admin-q-opt-c" class="form-control" placeholder="Texto opción C" required>
+                                </div>
+                                <div class="control-group">
+                                    <label for="admin-q-opt-d">Opción D:</label>
+                                    <input type="text" id="admin-q-opt-d" class="form-control" placeholder="Texto opción D" required>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label for="admin-q-correct">Opción Correcta:</label>
+                                <select id="admin-q-correct" class="form-control">
+                                    <option value="0">Opción A</option>
+                                    <option value="1">Opción B</option>
+                                    <option value="2">Opción C</option>
+                                    <option value="3">Opción D</option>
+                                </select>
+                            </div>
+
+                            <div class="control-group">
+                                <label for="admin-q-explanation">Explicación teórica:</label>
+                                <textarea id="admin-q-explanation" class="form-control" rows="3" placeholder="Ej. El elitismo garantiza conservar la mejor solución..." required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block" style="margin-top: 15px;">➕ Añadir al Cuestionario</button>
+                            
+                            <div class="admin-feedback-msg text-green hidden" id="admin-form-feedback">¡Pregunta agregada con éxito!</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pie de Página -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 GeneTech. Desarrollado con ❤️ para la enseñanza de Inteligencia Artificial.</p>
+            <p class="footer-links">
+                <a href="#" onclick="app.switchTab('inicio')">Inicio</a> &bull; 
+                <a href="#" onclick="app.switchTab('curso')">Curso</a> &bull; 
+                <a href="#" onclick="app.switchTab('laboratorio')">Laboratorio</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts de la Aplicación -->
+    <script src="js/ga-engine.js"></script>
+    <script src="js/simulator-string.js"></script>
+    <script src="js/simulator-math.js"></script>
+    <script src="js/simulator-tsp.js"></script>
+    <script src="js/course.js"></script>
+    <script src="js/quiz.js"></script>
+    <script src="js/code-examples.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- ── PWA: Registro del Service Worker ─────────────────────────── -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./service-worker.js')
+            .then(reg => {
+              console.log('[App] Service Worker registrado:', reg.scope);
+
+              // Notificar si hay una nueva versión disponible
+              reg.addEventListener('updatefound', () => {
+                const newWorker = reg.installing;
+                newWorker.addEventListener('statechange', () => {
+                  if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                    showOfflineToast('🔄 Nueva versión disponible. Recarga para actualizar.', 6000);
+                  }
+                });
+              });
+            })
+            .catch(err => console.warn('[App] Service Worker no pudo registrarse:', err));
+        });
+      }
+
+      // ── Indicador de estado de red ──────────────────────────────────
+      function showOfflineToast(msg, duration = 3500) {
+        let toast = document.getElementById('offline-toast');
+        if (!toast) {
+          toast = document.createElement('div');
+          toast.id = 'offline-toast';
+          toast.style.cssText = `
+            position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+            background: rgba(20,20,40,0.97); color: #fff; padding: 12px 24px;
+            border-radius: 40px; font-family: Inter, sans-serif; font-size: 14px;
+            box-shadow: 0 4px 30px rgba(123,47,255,0.4);
+            border: 1px solid rgba(123,47,255,0.5);
+            z-index: 99999; opacity: 0; transition: opacity 0.3s ease;
+            white-space: nowrap; pointer-events: none;
+          `;
+          document.body.appendChild(toast);
+        }
+        toast.textContent = msg;
+        toast.style.opacity = '1';
+        clearTimeout(toast._timer);
+        toast._timer = setTimeout(() => { toast.style.opacity = '0'; }, duration);
+      }
+
+      window.addEventListener('offline', () => {
+        showOfflineToast('📵 Sin conexión — GeneTech funciona completamente offline', 5000);
+      });
+      window.addEventListener('online', () => {
+        showOfflineToast('✅ Conexión restaurada', 3000);
+      });
+
+      // Mostrar aviso si ya estamos offline al cargar
+      if (!navigator.onLine) {
+        window.addEventListener('load', () => {
+          setTimeout(() => showOfflineToast('📵 Modo Offline — Todos los recursos están en cache', 5000), 1000);
+        });
+      }
+    </script>
+</body>
+</html>
+
