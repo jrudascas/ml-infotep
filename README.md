@@ -1,6 +1,12 @@
 # Institución Universitaria del Caribe
 # Bienvenidos al Curso de Inteligencia Artificial y Aprendizaje de Maquinas, periodo 2026-I
 
+## 🧬 Plataforma de Algoritmos Genéticos (GeneTech Pro)
+La plataforma interactiva del curso ha sido publicada y se encuentra disponible en la siguiente URL:
+🔗 **[https://candresh9.github.io/ml-infotep/](https://candresh9.github.io/ml-infotep/)**
+
+---
+
 Hay momentos en la historia en que todo cambia. La imprenta. La revolución industrial. Internet. Hoy, ustedes están en el umbral de la siguiente gran transformación: la era de la Inteligencia Artificial. Y no son espectadores — son protagonistas.
 En este curso no solo aprenderán a entrenar modelos o implementar algoritmos. Aprenderán a pensar como ingenieros del futuro: a ver patrones donde otros ven ruido, a extraer conocimiento donde otros ven datos, y a construir sistemas que aprenden y mejoran solos.
 El camino tendrá obstáculos. Habrá modelos que fallen, código que no funcione y conceptos que cuesten. Pero cada error es parte del aprendizaje, y la persistencia es la habilidad más valiosa que pueden desarrollar.
