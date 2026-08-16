@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuraAcademy - Panel de Administración</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="vistaPublica">
+        <header class="navbar">
+            <div class="logo"><i class="fa-solid fa-brain"></i> AuraAcademy</div>
+            <nav class="nav-links">
+                <a href="#cursos">Nuestros Cursos</a>
+                <a href="#beneficios">Beneficios</a>
+                <button class="btn-login" id="openLoginBtn"><i class="fa-solid fa-right-to-bracket"></i> Iniciar Sesión</button>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <span class="badge">Plataforma Educativa Especializada</span>
+            <h1>Forja la Próxima Era de la Innovación Tecnológica</h1>
+            <p>Potencia tus habilidades con nuestro ecosistema interactivo enfocado en ciencia de datos, optimización algorítmica y modelos predictivos modernos.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" id="heroRegBtn"><i class="fa-solid fa-rocket"></i> Solicitar Inscripción</button>
+                <button class="btn-secondary" onclick="document.getElementById('cursos').scrollIntoView({behavior: 'smooth'})">Explorar Programas</button>
+            </div>
+        </section>
+
+        <section id="cursos" class="section-container">
+            <h2 class="section-title">Programas Disponibles</h2>
+            <p class="section-subtitle">Formación técnica especializada con enfoque práctico y evaluaciones en tiempo real.</p>
+            
+            <div class="grid-cursos">
+                <div class="card-curso">
+                    <div class="card-header-purple">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <div class="card-body-curso">
+                        <h3>Modelos Predictivos: Regresión Lineal</h3>
+                        <p>Domina los fundamentos matemáticos del análisis de regresión, tratamiento de variables continuas e implementación de algoritmos predictivos clave utilizando entornos profesionales.</p>
+                        <button class="btn-outline card-reg-btn" data-curso="Modelos Predictivos: Regresión Lineal">Inscribirme a este Curso</button>
+                    </div>
+                </div>
+                
+                <div class="card-curso">
+                    <div class="card-header-purple">
+                        <i class="fa-solid fa-dna"></i>
+                    </div>
+                    <div class="card-body-curso">
+                        <h3>Evolución Computacional: Algoritmos Genéticos</h3>
+                        <p>Explora el poder de la computación evolutiva. Aprende a diseñar heurísticas de optimización inspiradas en la selección natural para resolver problemas lógicos complejos.</p>
+                        <button class="btn-outline card-reg-btn" data-curso="Evolución Computacional: Algoritmos Genéticos">Inscribirme a este Curso</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="beneficios" class="section-container text-center">
+            <h2 class="section-title">¿Por qué estudiar en AuraAcademy?</h2>
+            <div class="grid-beneficios">
+                <div class="beneficio-item">
+                    <i class="fa-solid fa-code b-icon"></i>
+                    <h3>Enfoque Práctico</h3>
+                    <p>Desarrolla proyectos de código desde el primer día con visualizadores dinámicos integrados.</p>
+                </div>
+                <div class="beneficio-item">
+                    <i class="fa-solid fa-user-shield"></i>
+                    <h3>Acceso Privado</h3>
+                    <p>Filtramos meticulosamente cada perfil de ingreso para garantizar una comunidad de alto nivel.</p>
+                </div>
+                <div class="beneficio-item">
+                    <i class="fa-solid fa-graduation-cap b-icon"></i>
+                    <h3>Evaluación Eficiente</h3>
+                    <p>Plataforma automatizada con retroalimentación instantánea sobre tus pruebas y progresos.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <div id="vistaPanel" class="panel-layout hidden">
+        
+        <header class="panel-header">
+            <div class="panel-logo">
+                <i class="fa-solid fa-brain"></i> AuraAcademy <span class="admin-indicator">| Admin Panel</span>
+            </div>
+            <div class="header-right">
+                <span class="user-welcome">Bienvenido, <strong>Kevin Rodríguez</strong></span>
+                <div class="user-avatar-mini">KR</div>
+                <button id="btnSalir" class="btn-salir"><i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión</button>
+            </div>
+        </header>
+
+        <div class="panel-container">
+            
+            <aside class="sidebar">
+                <div class="nav-group">
+                    <button class="sidebar-btn active" data-tab="tab-inicio">
+                        <i class="fa-solid fa-grip"></i> Consola de Control
+                    </button>
+                    <button class="sidebar-btn" data-tab="tab-perfil">
+                        <i class="fa-solid fa-id-card"></i> Cuenta & Perfil
+                    </button>
+                    <button class="sidebar-btn" data-tab="tab-config">
+                        <i class="fa-solid fa-sliders"></i> Ajustes del Sistema
+                    </button>
+                </div>
+                
+                <div class="sidebar-separator">MÓDULOS ACADÉMICOS</div>
+                
+                <div class="nav-group">
+                    <button class="sidebar-btn" data-tab="tab-cursos">
+                        <i class="fa-solid fa-layer-group"></i> Oferta Académica
+                    </button>
+                    <button class="sidebar-btn" data-tab="tab-progreso">
+                        <i class="fa-solid fa-chart-line"></i> Rendimiento de Alumnos
+                    </button>
+                </div>
+            </aside>
+
+            <main class="panel-content">
+                
+                <div id="tab-inicio" class="tab-content active">
+                    <div class="tab-main-header">
+                        <h2>Consola Principal de Administración</h2>
+                        <span class="role-badge">SUPERADMIN</span>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>Solicitudes Pendientes</h3>
+                            <p class="stat-num num-purple" id="count-pendientes">2</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Alumnos Activos</h3>
+                            <p class="stat-num num-purple" id="count-activos">2</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Egresados Graduados</h3>
+                            <p class="stat-num num-muted">0</p>
+                        </div>
+                    </div>
+
+                    <div class="panel-card-wrapper">
+                        <h3 class="card-section-title">Control de Matrículas e Ingresos</h3>
+                        
+                        <div class="table-container">
+                            <table class="custom-table" id="tablaUsuarios">
+                                <thead>
+                                    <tr>
+                                        <th>Estudiante</th>
+                                        <th>Contacto Electrónico</th>
+                                        <th>Programa Solicitado</th>
+                                        <th>Estado Actual</th>
+                                        <th style="text-align: right;">Acciones de Control</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr id="row-solicitud-1">
+                                        <td><strong>Carlos Mendoza</strong><br><small class="text-gray">ID: 80992311</small></td>
+                                        <td>carlos.mendoza@mail.com</td>
+                                        <td>Modelos Predictivos: Regresión Lineal</td>
+                                        <td><span class="badge-status status-pending">Esperando Revisión</span></td>
+                                        <td style="text-align: right;">
+                                            <button class="btn-action-approve" onclick="aprobarAlumno('row-solicitud-1')"><i class="fa-solid fa-check"></i> Admitir</button>
+                                            <button class="btn-action-reject" onclick="rechazarAlumno('row-solicitud-1')"><i class="fa-solid fa-xmark"></i> Denegar</button>
+                                        </td>
+                                    </tr>
+                                    <tr id="row-solicitud-2">
+                                        <td><strong>Mariana Silva</strong><br><small class="text-gray">ID: 10453321</small></td>
+                                        <td>mariana.silva@outlook.com</td>
+                                        <td>Evolución Computacional: Algoritmos Genéticos</td>
+                                        <td><span class="badge-status status-pending">Esperando Revisión</span></td>
+                                        <td style="text-align: right;">
+                                            <button class="btn-action-approve" onclick="aprobarAlumno('row-solicitud-2')"><i class="fa-solid fa-check"></i> Admitir</button>
+                                            <button class="btn-action-reject" onclick="rechazarAlumno('row-solicitud-2')"><i class="fa-solid fa-xmark"></i> Denegar</button>
+                                        </td>
+                                    </tr>
+                                    <tr id="row-alumno-3">
+                                        <td><strong>Andrés Mendoza</strong><br><small class="text-gray">ID: 1080423792</small></td>
+                                        <td>andres.mendoza@gmail.com</td>
+                                        <td>Modelos Predictivos: Regresión Lineal</td>
+                                        <td><span class="badge-status status-active">Matriculado</span></td>
+                                        <td style="text-align: right;">
+                                            <button class="btn-action-delete" onclick="eliminarFila('row-alumno-3')"><i class="fa-solid fa-trash-can"></i> De baja</button>
+                                        </td>
+                                    </tr>
+                                    <tr id="row-alumno-4">
+                                        <td><strong>Jorge Rudas</strong><br><small class="text-gray">ID: 12922919</small></td>
+                                        <td>jrudascas@gmail.com</td>
+                                        <td>Evolución Computacional: Algoritmos Genéticos</td>
+                                        <td><span class="badge-status status-active">Matriculado</span></td>
+                                        <td style="text-align: right;">
+                                            <button class="btn-action-delete" onclick="eliminarFila('row-alumno-4')"><i class="fa-solid fa-trash-can"></i> De baja</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-perfil" class="tab-content">
+                    <div class="panel-card-wrapper max-width-form">
+                        <h3 class="card-section-title-icon"><i class="fa-solid fa-id-badge"></i> Expediente de Administrador</h3>
+                        <p class="card-section-desc">Información del titular de la plataforma AuraAcademy.</p>
+                        
+                        <form class="panel-inner-form" id="formPerfilAdmin">
+                            <div class="form-group-panel">
+                                <label>Identificación de Usuario</label>
+                                <input type="text" value="123456789" id="perfilDni">
+                            </div>
+                            <div class="form-group-panel">
+                                <label>Nombre y Apellido Titular</label>
+                                <input type="text" value="Kevin Rodríguez" id="perfilNombre">
+                            </div>
+                            <div class="form-group-panel">
+                                <label>Correo Institucional Primario</label>
+                                <input type="email" value="kevin.rodriguez@auraacademy.com" readonly class="input-disabled">
+                            </div>
+                            
+                            <button type="button" class="btn-purple-outline" id="btnToggleContrasena"><i class="fa-solid fa-lock"></i> Gestionar Contraseña de Seguridad</button>
+                            
+                            <div id="subFormPassword" class="hidden-box hidden">
+                                <div class="form-group-panel" style="margin-top: 15px;">
+                                    <label>Nueva Contraseña de Acceso</label>
+                                    <input type="password" id="newPasswordInput" placeholder="Escribe la nueva contraseña">
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-purple-block">Actualizar Datos de Cuenta</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="tab-config" class="tab-content">
+                    <div class="panel-card-wrapper max-width-form">
+                        <h3 class="card-section-title-icon"><i class="fa-solid fa-gears"></i> Núcleo de Notificaciones Automatizadas</h3>
+                        <p class="card-section-desc">Establece las credenciales del servidor SMTP para el despacho de alertas de admisión.</p>
+                        
+                        <form class="panel-inner-form" id="formConfigNotif">
+                            <div class="form-group-panel">
+                                <label>Remitente Oficial de Despacho</label>
+                                <input type="email" value="kevin.rodriguez@auraacademy.com" id="configRemitente">
+                            </div>
+                            <div class="form-group-panel">
+                                <label>Token de Aplicación Seguro</label>
+                                <input type="password" value="••••••••••••••••••••" id="configToken">
+                            </div>
+                            <div class="form-group-panel">
+                                <label>Etiqueta de Firma de Mensajes</label>
+                                <input type="text" value="Dirección Académica AuraAcademy" id="configFirma">
+                            </div>
+                            
+                            <button type="submit" class="btn-purple-block"><i class="fa-solid fa-circle-check"></i> Almacenar Parámetros del Servidor</button>
+                        </form>
+                    </div>
+
+                    <div class="panel-card-wrapper max-width-form" style="margin-top: 25px;">
+                        <h3 class="card-section-title-icon"><i class="fa-solid fa-fingerprint"></i> Resumen Operativo</h3>
+                        <div class="profile-info-table">
+                            <div class="info-row"><span>Entorno Operativo</span><strong>Producción Global (2026)</strong></div>
+                            <div class="info-row"><span>Base de Datos</span><strong>Sincronizada</strong></div>
+                            <div class="info-row"><span>Nivel de Seguridad</span><strong>Encriptación SSL Activa</strong></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-cursos" class="tab-content">
+                    <div class="panel-card-wrapper">
+                        <div class="tab-flex-header">
+                            <div>
+                                <small class="text-purple-light">PORTAFOLIO ACADÉMICO ACTIVO</small>
+                                <h2 class="main-card-title">Configuración de Módulos Didácticos</h2>
+                            </div>
+                            <button class="btn-purple-add" id="btnCrearCurso"><i class="fa-solid fa-plus"></i> Añadir Nuevo Programas</button>
+                        </div>
+
+                        <div class="catalog-box">
+                            <div class="course-panel-list" id="contenedorListaCursos">
+                                <div class="course-panel-item" id="c-panel-1">
+                                    <div class="course-left-side">
+                                        <div class="course-title-row">
+                                            <h4>Modelos Predictivos: Regresión Lineal</h4>
+                                            <span class="badge-pill-status">Activo</span>
+                                        </div>
+                                        <p class="course-short-desc">Formación avanzada en regresión, ajuste de curvas y predicción automatizada mediante algoritmos supervisados.</p>
+                                    </div>
+                                    <div class="course-right-actions">
+                                        <button class="btn-inline-delete" onclick="eliminarFila('c-panel-1')"><i class="fa-solid fa-ban"></i> Desactivar</button>
+                                    </div>
+                                </div>
+
+                                <div class="course-panel-item" id="c-panel-2">
+                                    <div class="course-left-side">
+                                        <div class="course-title-row">
+                                            <h4>Evolución Computacional: Algoritmos Genéticos</h4>
+                                            <span class="badge-pill-status">Activo</span>
+                                        </div>
+                                        <p class="course-short-desc">Diseño, cruce, mutación y selección aplicados a problemas de búsqueda compleja y optimización multivariable.</p>
+                                    </div>
+                                    <div class="course-right-actions">
+                                        <button class="btn-inline-delete" onclick="eliminarFila('c-panel-2')"><i class="fa-solid fa-ban"></i> Desactivar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-progreso" class="tab-content">
+                    <div class="panel-card-wrapper">
+                        <div class="tab-flex-header">
+                            <div class="flex-align-center-gap">
+                                <i class="fa-solid fa-chart-line card-main-icon-title"></i>
+                                <h2 class="main-card-title">Auditoría de Desempeño Académico</h2>
+                            </div>
+                        </div>
+
+                        <div class="progress-students-list" id="contenedorProgreso">
+                            <div class="student-progress-card">
+                                <div class="student-card-left">
+                                    <div class="student-avatar-avatar">AM</div>
+                                    <div class="student-details-meta">
+                                        <h4>Andrés Mendoza</h4>
+                                        <p>andres.mendoza@gmail.com • <strong>Curso: Regresión Lineal</strong></p>
+                                    </div>
+                                </div>
+                                <div class="student-card-right">
+                                    <span class="grade-status-text">Pendiente</span>
+                                    <small class="grade-sub">Calificación Examen</small>
+                                </div>
+                            </div>
+
+                            <div class="student-progress-card">
+                                <div class="student-card-left">
+                                    <div class="student-avatar-avatar">JR</div>
+                                    <div class="student-details-meta">
+                                        <h4>Jorge Rudas</h4>
+                                        <p>jrudascas@gmail.com • <strong>Curso: Algoritmos Genéticos</strong></p>
+                                    </div>
+                                </div>
+                                <div class="student-card-right">
+                                    <span class="grade-status-text">Pendiente</span>
+                                    <small class="grade-sub">Calificación Examen</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+
+    <div id="modalLogin" class="modal-overlay">
+        <div class="modal-content login-box">
+            <button id="closeLoginBtn" class="close-btn-corner">&times;</button>
+            <div class="login-header">
+                <h2>Iniciar Sesión</h2>
+                <p>Módulo Administrativo AuraAcademy</p>
+            </div>
+            
+            <form id="formAutenticacionReal" class="login-form">
+                <div class="form-group-login">
+                    <label class="modal-label-inside">Correo del Administrador</label>
+                    <input type="email" id="loginEmail" required placeholder="ejemplo@auraacademy.com">
+                </div>
+                <div class="form-group-login">
+                    <label class="modal-label-inside">Contraseña de Acceso</label>
+                    <input type="password" id="loginPassword" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn-next">Ingresar al Sistema</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="modalRegistro" class="modal-overlay">
+        <div class="modal-content registration-box">
+            <div class="modal-header-styled">
+                <h3><i class="fa-solid fa-file-signature"></i> Formulario de Inscripción</h3>
+                <button id="closeRegBtn" class="close-btn-corner-styled">&times;</button>
+            </div>
+            
+            <form id="formInscripcionPublico" class="registration-form">
+                <p class="form-instructions">Por favor, rellene cada uno de sus datos reales. Su solicitud pasará a una fila de aprobación por la administración de AuraAcademy.</p>
+                
+                <div class="form-grid-two-columns">
+                    <div class="form-group-modal">
+                        <label>Nombres Completos</label>
+                        <input type="text" id="regNombre" placeholder="Ej. Juan Pérez" required>
+                    </div>
+                    <div class="form-group-modal">
+                        <label>Documento de Identificación</label>
+                        <input type="text" id="regDni" placeholder="DNI / Cédula" required>
+                    </div>
+                </div>
+
+                <div class="form-group-modal">
+                    <label>Correo Electrónico de Contacto</label>
+                    <input type="email" id="regEmail" placeholder="juan.perez@correo.com" required>
+                </div>
+
+                <div class="form-group-modal">
+                    <label>Programa Académico al que Solicita Ingreso</label>
+                    <select id="regCurso" required>
+                        <option value="" disabled selected>-- Seleccione un curso de la oferta --</option>
+                        <option value="Modelos Predictivos: Regresión Lineal">Modelos Predictivos: Regresión Lineal</option>
+                        <option value="Evolución Computacional: Algoritmos Genéticos">Evolución Computacional: Algoritmos Genéticos</option>
+                    </select>
+                </div>
+
+                <div class="form-group-modal">
+                    <label>Breve Reseña de tu Perfil u Objetivo Académico</label>
+                    <textarea id="regMeta" rows="3" placeholder="Cuéntanos brevemente tu nivel de experiencia o motivación..."></textarea>
+                </div>
+
+                <div class="modal-action-footer">
+                    <button type="button" class="btn-modal-cancel" id="btnCancelarReg">Cancelar</button>
+                    <button type="submit" class="btn-modal-submit">Enviar Mi Solicitud</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Elementos de Control
+        const vistaPublica = document.getElementById('vistaPublica');
+        const vistaPanel = document.getElementById('vistaPanel');
+        const modalLogin = document.getElementById('modalLogin');
+        const modalRegistro = document.getElementById('modalRegistro');
+        
+        let passwordAdministrador = "password123"; // Contraseña por defecto
+
+        // --- SISTEMA DE LOGGING CON VALIDACIÓN REAL ---
+        document.getElementById('formAutenticacionReal').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const emailDigitado = document.getElementById('loginEmail').value.trim();
+            const passwordDigitada = document.getElementById('loginPassword').value;
+
+            if (emailDigitado === "kevin.rodriguez@auraacademy.com" && passwordDigitada === passwordAdministrador) {
+                // Éxito en inicio de sesión
+                modalLogin.classList.remove('active');
+                vistaPublica.classList.add('hidden');
+                vistaPanel.classList.remove('hidden');
+                // Limpiar inputs
+                document.getElementById('loginEmail').value = "";
+                document.getElementById('loginPassword').value = "";
+            } else {
+                // Datos incorrectos
+                alert("Error de autenticación: El correo electrónico o la contraseña ingresada son inválidos para el rol de administrador.");
+            }
+        });
+
+        // Cierre de Sesión Completo
+        document.getElementById('btnSalir').onclick = () => {
+            vistaPanel.classList.add('hidden');
+            vistaPublica.classList.remove('hidden');
+        };
+
+        // --- MANEJO DE MODALES ---
+        document.getElementById('openLoginBtn').onclick = () => modalLogin.classList.add('active');
+        document.getElementById('closeLoginBtn').onclick = () => modalLogin.classList.remove('active');
+
+        // Botones de Registro (Landing)
+        document.getElementById('heroRegBtn').onclick = () => {
+            document.getElementById('regCurso').selectedIndex = 0;
+            modalRegistro.classList.add('active');
+        };
+
+        document.querySelectorAll('.card-reg-btn').forEach(button => {
+            button.onclick = () => {
+                const cursoEspecifico = button.getAttribute('data-curso');
+                document.getElementById('regCurso').value = cursoEspecifico;
+                modalRegistro.classList.add('active');
+            };
+        });
+
+        const cerrarModalInscripcion = () => {
+            document.getElementById('formInscripcionPublico').reset();
+            modalRegistro.classList.remove('active');
+        };
+        document.getElementById('closeRegBtn').onclick = cerrarModalInscripcion;
+        document.getElementById('btnCancelarReg').onclick = cerrarModalInscripcion;
+
+        // --- ENVÍO DINÁMICO DE SOLICITUD DE INSCRIPCIÓN ---
+        document.getElementById('formInscripcionPublico').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const nombre = document.getElementById('regNombre').value;
+            const dni = document.getElementById('regDni').value;
+            const email = document.getElementById('regEmail').value;
+            const curso = document.getElementById('regCurso').value;
+
+            // Generar ID único simulado
+            const nuevoId = Math.floor(Math.random() * 900000) + 100000;
+            const rowId = `row-dinamico-${nuevoId}`;
+
+            // Inyectar la fila directo a la tabla de administración
+            const tbody = document.querySelector('#tablaUsuarios tbody');
+            const nuevaFila = document.createElement('tr');
+            nuevaFila.id = rowId;
+            nuevaFila.innerHTML = `
+                <td><strong>${nombre}</strong><br><small class="text-gray">ID: ${dni}</small></td>
+                <td>${email}</td>
+                <td>${curso}</td>
+                <td><span class="badge-status status-pending">Esperando Revisión</span></td>
+                <td style="text-align: right;">
+                    <button class="btn-action-approve" onclick="aprobarAlumno('${rowId}')"><i class="fa-solid fa-check"></i> Admitir</button>
+                    <button class="btn-action-reject" onclick="rechazarAlumno('${rowId}')"><i class="fa-solid fa-xmark"></i> Denegar</button>
+                </td>
+            `;
+            tbody.insertBefore(nuevaFila, tbody.firstChild);
+
+            // Actualizar contador visual de pendientes
+            const countPendientes = document.getElementById('count-pendientes');
+            countPendientes.textContent = parseInt(countPendientes.textContent) + 1;
+
+            alert("¡Solicitud enviada con éxito! Su perfil está en fila de espera.");
+            cerrarModalInscripcion();
+        });
+
+        // --- FUNCIONES DE CONTROL DE FILAS (MOCK) ---
+        window.aprobarAlumno = (rowId) => {
+            const fila = document.getElementById(rowId);
+            if(fila) {
+                const statusBadge = fila.querySelector('.badge-status');
+                statusBadge.className = "badge-status status-active";
+                statusBadge.textContent = "Matriculado";
+                
+                // Cambiar botones de acción por el de dar de baja
+                const accionesTd = fila.cells[4];
+                accionesTd.innerHTML = `<button class="btn-action-delete" onclick="eliminarFila('${rowId}')"><i class="fa-solid fa-trash-can"></i> De baja</button>`;
+                
+                // Actualizar contadores
+                const countPendientes = document.getElementById('count-pendientes');
+                const countActivos = document.getElementById('count-activos');
+                countPendientes.textContent = Math.max(0, parseInt(countPendientes.textContent) - 1);
+                countActivos.textContent = parseInt(countActivos.textContent) + 1;
+            }
+        };
+
+        window.rechazarAlumno = (rowId) => {
+            const fila = document.getElementById(rowId);
+            if(fila) {
+                fila.remove();
+                const countPendientes = document.getElementById('count-pendientes');
+                countPendientes.textContent = Math.max(0, parseInt(countPendientes.textContent) - 1);
+            }
+        };
+
+        window.eliminarFila = (rowId) => {
+            const fila = document.getElementById(rowId);
+            if(fila) {
+                fila.remove();
+                // Si era un alumno activo, restar del contador
+                const countActivos = document.getElementById('count-activos');
+                countActivos.textContent = Math.max(0, parseInt(countActivos.textContent) - 1);
+            }
+        };
+
+        // --- SISTEMA DE PESTAÑAS SIDEBAR ---
+        document.querySelectorAll('.sidebar-btn').forEach(button => {
+            button.onclick = () => {
+                document.querySelectorAll('.sidebar-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+                
+                button.classList.add('active');
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            };
+        });
+
+        // Toggle Password Form
+        document.getElementById('btnToggleContrasena').onclick = () => {
+            const subForm = document.getElementById('subFormPassword');
+            subForm.classList.toggle('hidden');
+        };
+    </script>
+</body>
+</html>
