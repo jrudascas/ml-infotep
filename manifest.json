@@ -1,0 +1,35 @@
+{
+  "name": "GeneTech Pro — Algoritmos Genéticos",
+  "short_name": "GeneTech",
+  "description": "Plataforma interactiva de Algoritmos Genéticos: curso, simuladores, código y evaluaciones. Funciona completamente sin conexión.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b0c1a",
+  "theme_color": "#7b2fff",
+  "orientation": "any",
+  "lang": "es",
+  "scope": "./",
+  "categories": ["education", "productivity"],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "icons/screenshot.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ]
+}
